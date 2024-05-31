@@ -60,7 +60,7 @@ router.post("/", async function(req, res, next) {
     let { comp_code, amt } = req.body;
 
     try {
-        let result = db.query(
+        let result = await db.query(
             `INSERT INTO invoices
             (comp_code, amt)
             VALUES ($1, $2)
