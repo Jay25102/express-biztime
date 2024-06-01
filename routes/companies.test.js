@@ -51,15 +51,14 @@ describe("read functions", function() {
 describe("Create functions", function() {
     test("post to /companies", async function() {
         const response = await request(app).post("/companies").send({
-            "code": "somecode",
-            "name": "somename",
+            "name": "Somename",
             "description": "something"
         });
         expect(response.statusCode).toEqual(201);
         expect(response.body).toEqual({
             "company": {
-                "code": "somecode",
-                "name": "somename",
+                "code": "somename",
+                "name": "Somename",
                 "description": "something"
             }
         });

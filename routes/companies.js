@@ -1,4 +1,5 @@
 const express = require("express");
+const slugify = require("slugify");
 const router = new express.Router();
 const db = require("../db");
 const ExpressError = require("../expressError");
@@ -50,7 +51,8 @@ router.get("/:code", async function(req, res, next) {
 });
 
 router.post("/", async function(req, res, next) {
-    let {code, name, description } = req.body;
+    let { name, description } = req.body;
+    let code = slugify(name, {lower: true});
 
     try {
         const result = await db.query(
